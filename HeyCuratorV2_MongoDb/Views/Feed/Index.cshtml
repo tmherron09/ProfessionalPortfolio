@@ -1,0 +1,10 @@
+﻿@model List<tmherronProfessionalSite.ViewModel.FeedBriefViewModel>
+
+    <div class="">
+
+        @foreach (var item in Model)
+        {
+            <partial name="_FeedBriefPartial" model="item" />
+        }
+
+    </div>

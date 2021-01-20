@@ -1,0 +1,19 @@
+
+
+
+.topnav {
+    background-color: #000;
+    overflow: hidden;
+    font-family: 'Bahnschrift SemiBold', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    align-self: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
