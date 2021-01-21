@@ -9,6 +9,7 @@ using tmherronProfessionalSite.ViewModel;
 
 namespace tmherronProfessionalSite.Controllers
 {
+    
     public class FeedController : Controller
     {
         private readonly PostService _postService;
@@ -42,5 +43,13 @@ namespace tmherronProfessionalSite.Controllers
 
             return View(briefs);
         }
+
+        [Route("feed/{id:length(24)}")]
+        public IActionResult Entry(string id)
+        {
+            PostModel post = _postService.Get(id);
+            return View(post);
+        }
+
     }
 }

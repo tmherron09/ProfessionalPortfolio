@@ -19,17 +19,19 @@
 }
 
 <article class="w-full lg:p-6 lg:w-8/12 flex items-center mb-24 mx-auto post_pulse">
-    <section class="sm:px-0 w-11/12 relative lg:w-2/3  lg:mx-auto cursor-pointer" onclick="location.href='/home'">
-        <div class="w-48 lg:w-48  inset-y-0 -right-0 absolute bg-gradient-to-r from-@rngColorScheme[0]-300 to-@rngColorScheme[1]-300 opacity-70 rounded-md transform rotate-45 lg:-skew-y-6 lg:scale-105 z-0"></div>
-        <div class="relative w-full bg-gray-50 shadow-inner rounded-t-md px-8 pt-4 pb-4">
-            <h3 class="text-3xl font-semibold text-gray-700 text-opacity-80 leading-tight mb-1">@Model.Title</h3>
-            <h5 class="text-xl text-gray-500 mb-2 ">@Model.Tagline</h5>
-            <hr class="border border-gray-400 mb-2 mr-6"/>
-            <p class="text-base text-gray-400 pl-3 pr-12">@Model.BriefText</p>
-        </div>
-        <div class=" relative w-full bg-@rngColorScheme[0]-600 bg-opacity-50 rounded-b-md font-serif px-8 py-2">
-            <span class="text-@rngColorScheme[0]-900 font-bold">Tim Herron</span>
-            <span class="float-right text-gray-50">January 19th, 2020</span>
-        </div>
-    </section>
+    <a asp-controller="Feed" asp-action="Entry" asp-route-id="@Model.Id">
+        <section class="sm:px-0 w-11/12 relative lg:w-2/3  lg:mx-auto cursor-pointer" @*onclick="location.href='/feed/@Model.Id'"*@>
+            <div class="w-48 lg:w-48  inset-y-0 -right-0 absolute bg-gradient-to-r from-@rngColorScheme[0]-300 to-@rngColorScheme[1]-300 opacity-70 rounded-md transform rotate-45 lg:-skew-y-6 lg:scale-105 z-0"></div>
+            <div class="relative w-full bg-gray-50 shadow-inner rounded-t-md px-8 pt-4 pb-4">
+                <h3 class="text-3xl font-semibold text-gray-700 text-opacity-80 leading-tight mb-1">@Model.Title</h3>
+                <h5 class="text-xl text-gray-500 mb-2 ">@Model.Tagline</h5>
+                <hr class="border border-gray-400 mb-2 mr-6" />
+                <p class="text-base text-gray-400 pl-3 pr-12">@Model.BriefText</p>
+            </div>
+            <div class=" relative w-full bg-@rngColorScheme[0]-600 bg-opacity-50 rounded-b-md font-serif px-8 py-2">
+                <span class="text-@rngColorScheme[0]-900 font-bold">Tim Herron</span>
+                <span class="float-right text-gray-50">January 19th, 2020</span>
+            </div>
+        </section>
+    </a>
 </article>

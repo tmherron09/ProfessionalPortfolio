@@ -32,7 +32,7 @@ namespace tmherronProfessionalSite.Services
         public PostService(IConfiguration config)
         {
             _config = config;
-            string connectionString = _config["Production:TmherronProfSiteSettings:ConnectionString"];
+            string connectionString = _config["TmherronProfSiteSettings:ConnectionString"];
 
             var client = new MongoClient(connectionString);
 

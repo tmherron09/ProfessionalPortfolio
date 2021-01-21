@@ -21,6 +21,7 @@ namespace tmherronProfessionalSite.Models
         public string Title { get; set; }
         public string Tagline { get; set; }
         public string Text { get; set; }
+        public DateTime PostedOn { get; set; }
         public int ViewCount { get; set; }
         public string FeedType { get; set; }
         public IEnumerable<PostCommentModel> PostComments { get; set; }
