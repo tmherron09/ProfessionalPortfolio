@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,31 @@ namespace tmherronProfessionalSite.Services
 
         private readonly IMongoCollection<PostModel> _posts;
 
-        public PostService(ITmherronProfSiteSettings settings)
-        {
-            var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
+        private readonly IConfiguration _config;
 
-            _posts = database.GetCollection<PostModel>(settings.PostCollectionName);
+        // Uncomment for local MongoDb Dev
+        //public PostService(ITmherronProfSiteSettings settings)
+        //{ 
+        //    var client = new MongoClient(settings.ConnectionString);
+
+
+        //    var database = client.GetDatabase(settings.DatabaseName);
+
+        //    _posts = database.GetCollection<PostModel>(settings.PostCollectionName);
+        //    _posts = database.GetCollection<PostModel>("Posts");
+        //}
+        
+        public PostService(IConfiguration config)
+        {
+            _config = config;
+            string connectionString = _config["Production:TmherronProfSiteSettings:ConnectionString"];
+
+            var client = new MongoClient(connectionString);
+
+
+            var database = client.GetDatabase(_config["TmherronProfSiteSettings:DatabaseName"]);
+
+            _posts = database.GetCollection<PostModel>(_config["TmherronProfSiteSettings:PostCollectionName"]);
         }
 
         public List<PostModel> Get() =>
@@ -31,7 +51,7 @@ namespace tmherronProfessionalSite.Services
         public List<FeedBriefViewModel> GetLatest5Briefs()
         {
             // Test once more posts.
-            List<PostModel> posts = _posts.Find(post => true).SortByDescending(post => post.Id).Limit(5).ToList();
+            List<PostModel> posts = _posts.Find(post => true).Limit(5).ToList();
             List<FeedBriefViewModel> briefs = new List<FeedBriefViewModel>();
 
             foreach (var post in posts)

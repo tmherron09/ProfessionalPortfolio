@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#Project specific file for Azure
+appsettings.Production.json
+appsettings.Development.json
+
 # User-specific files
 *.rsuser
 *.suo
@@ -338,3 +342,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/HeyCuratorV2_MongoDb/.azure

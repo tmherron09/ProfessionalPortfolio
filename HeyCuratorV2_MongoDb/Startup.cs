@@ -1,24 +1,18 @@
 using HeyCuratorV2_MongoDb.Data;
+using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JavaScriptEngineSwitcher.V8;
-using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using React.AspNet;
 using tmherronProfessionalSite.Data;
 using tmherronProfessionalSite.Services;
-using Microsoft.Extensions.Options;
 
 namespace HeyCuratorV2_MongoDb
 {
@@ -44,16 +38,17 @@ namespace HeyCuratorV2_MongoDb
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            // Temp Disabled
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            // Data access configuration
-            services.Configure<TmherronProfSiteSettings>(
-                Configuration.GetSection(nameof(TmherronProfSiteSettings)));
+            // Local MongoDb Data access configuration
+            //services.Configure<TmherronProfSiteSettings>(
+            //    Configuration.GetSection(nameof(TmherronProfSiteSettings)));
 
-            services.AddSingleton<ITmherronProfSiteSettings>(sp =>
-                sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
+            //services.AddSingleton<ITmherronProfSiteSettings>(sp =>
+            //    sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
 
             services.AddSingleton<PostService>();
 
@@ -62,6 +57,22 @@ namespace HeyCuratorV2_MongoDb
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddSwaggerGen(c =>
+           {
+               c.SwaggerDoc("v1", new OpenApiInfo
+               {
+                   Version = "v1",
+                   Title = "Tim Herron Professional Portfolio API",
+                   Description = "Api for both Personal Portfolio and projects hosted within the Professional Portfolio.",
+                   Contact = new OpenApiContact
+                   {
+                       Name = "Tim Herron",
+                       Email = "tmherron09@gmail.com",
+                   },
+               });
+           });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +89,13 @@ namespace HeyCuratorV2_MongoDb
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+           {
+               c.SwaggerEndpoint("/swagger/v1/swagger.json", "TMHerron Portfolio API v1");
+           });
 
             app.UseCors(
                             options => options.AllowAnyOrigin()
