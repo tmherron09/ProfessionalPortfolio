@@ -41,7 +41,6 @@
                     <button class="py-2 px-6 bg-blue-500 hover:bg-blue-600 rounded-md text-white text-lg focus:outline-none">Sign Up</button>
                 </div>
 
-                @* TODO: Add Hamburger menu logic *@
                 <div class="block lg:hidden">
                     <button class="flex items-center px-4 py-3 border rounded-md text-blue-500 border-blue-500 focus:outline-none" onclick="responsiveMenu()">
                         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +72,7 @@
     </header>
 
 
-    <main role="main" class="mt-12 sm:w-screen sm:mx-0">
+    <main role="main" class="mt-12 sm:w-screen max-w-full sm:mx-0">
         @RenderBody()
     </main>
 
