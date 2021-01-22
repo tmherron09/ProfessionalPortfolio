@@ -11,5 +11,6 @@ namespace tmherronProfessionalSite.Data
         string DatabaseName { get; set; }
         string PostCollectionName { get; set; }
         string PostCommentCollectionName { get; set; }
+        string ContactFormCollectionName { get; set; }
     }
 }

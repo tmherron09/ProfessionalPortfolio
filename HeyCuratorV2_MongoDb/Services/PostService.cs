@@ -17,30 +17,30 @@ namespace tmherronProfessionalSite.Services
 
         private readonly IConfiguration _config;
 
-        // Uncomment for local MongoDb Dev
-        //public PostService(ITmherronProfSiteSettings settings)
-        //{ 
-        //    var client = new MongoClient(settings.ConnectionString);
-
-
-        //    var database = client.GetDatabase(settings.DatabaseName);
-
-        //    _posts = database.GetCollection<PostModel>(settings.PostCollectionName);
-        //    _posts = database.GetCollection<PostModel>("Posts");
-        //}
-        
-        public PostService(IConfiguration config)
+        //Uncomment for local MongoDb Dev
+        public PostService(ITmherronProfSiteSettings settings)
         {
-            _config = config;
-            string connectionString = _config["TmherronProfSiteSettings:ConnectionString"];
-
-            var client = new MongoClient(connectionString);
+            var client = new MongoClient(settings.ConnectionString);
 
 
-            var database = client.GetDatabase(_config["TmherronProfSiteSettings:DatabaseName"]);
+            var database = client.GetDatabase(settings.DatabaseName);
 
-            _posts = database.GetCollection<PostModel>(_config["TmherronProfSiteSettings:PostCollectionName"]);
+            _posts = database.GetCollection<PostModel>(settings.PostCollectionName);
+            //_posts = database.GetCollection<PostModel>("Posts");
         }
+
+        //public PostService(IConfiguration config)
+        //{
+        //    _config = config;
+        //    string connectionString = _config["TmherronProfSiteSettings:ConnectionString"];
+
+        //    var client = new MongoClient(connectionString);
+
+
+        //    var database = client.GetDatabase(_config["TmherronProfSiteSettings:DatabaseName"]);
+
+        //    _posts = database.GetCollection<PostModel>(_config["TmherronProfSiteSettings:PostCollectionName"]);
+        //}
 
         public List<PostModel> Get() =>
             _posts.Find(post => true).ToList();

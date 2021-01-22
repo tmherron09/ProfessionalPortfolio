@@ -31,6 +31,8 @@ namespace HeyCuratorV2_MongoDb
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
 
+
+
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
               .AddV8();
 
@@ -44,13 +46,14 @@ namespace HeyCuratorV2_MongoDb
 
 
             // Local MongoDb Data access configuration
-            //services.Configure<TmherronProfSiteSettings>(
-            //    Configuration.GetSection(nameof(TmherronProfSiteSettings)));
+            services.Configure<TmherronProfSiteSettings>(
+                Configuration.GetSection(nameof(TmherronProfSiteSettings)));
 
-            //services.AddSingleton<ITmherronProfSiteSettings>(sp =>
-            //    sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
+            services.AddSingleton<ITmherronProfSiteSettings>(sp =>
+                sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
 
             services.AddSingleton<PostService>();
+            services.AddSingleton<ContactService>();
 
 
             services.AddCors();

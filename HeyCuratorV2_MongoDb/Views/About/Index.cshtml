@@ -1,4 +1,4 @@
-﻿@model List<tmherronProfessionalSite.ViewModel.FeedBriefViewModel>
+﻿
 @{
     ViewData["Title"] = "Home Page";
 
@@ -10,16 +10,6 @@
 
 <hr class="w-8/12 my-24 border-dashed rounded-sm border-2 opacity-40 border-green-700 mx-auto" />
 
-
-
-<div class="">
-
-    @foreach (var item in Model)
-    {
-        <partial name="_FeedBriefPartial" model="item" />
-    }
-
-</div>
 
 
 @section Scripts {
