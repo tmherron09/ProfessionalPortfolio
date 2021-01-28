@@ -76,6 +76,19 @@ namespace HeyCuratorV2_MongoDb.Controllers
             return NoContent();
         }
 
+        [HttpPut("~/AddComment{id:length(24)}")]
+        public IActionResult AddComment(string id, PostCommentModel comment)
+        {
+            var profile = _postService.Get(id);
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            _postService.AddComment(comment, id);
+
+            return NoContent();
+        }
+
 
     }
 }

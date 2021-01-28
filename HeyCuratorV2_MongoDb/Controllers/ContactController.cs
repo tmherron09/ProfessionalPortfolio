@@ -8,6 +8,7 @@ using tmherronProfessionalSite.Services;
 
 namespace tmherronProfessionalSite.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("[controller]")]
     public class ContactController : Controller
     {
@@ -18,7 +19,7 @@ namespace tmherronProfessionalSite.Controllers
         {
             _contactService = contactService;
         }
-
+       
         public IActionResult Index()
         {
             return View();

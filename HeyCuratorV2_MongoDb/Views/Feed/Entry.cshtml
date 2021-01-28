@@ -1,13 +1,33 @@
-﻿@model tmherronProfessionalSite.Models.PostModel
+﻿
+@model tmherronProfessionalSite.Models.PostModel
 @{
 
     string dateFormated = Model.PostedOn.ToString("dddd MMMM d, yyyy");
+    Dictionary<string, string> metaTags = new Dictionary<string, string>();
+    metaTags.Add("og:title", $"{Model.Title}");
+    metaTags.Add("twitter:title", $"{Model.Title}");
+    metaTags.Add("og:type", "website");
+    metaTags.Add("og:url", "https://TimHerron.dev" + ViewContext.HttpContext.Request.Path);
+    metaTags.Add("article: author", $"{Model.Author}");
+    metaTags.Add("og:description", $"{Model.Tagline}");
+    metaTags.Add("twitter:description", $"{Model.Tagline}");
+    metaTags.Add("article: published_time", dateFormated);
+    metaTags.Add("og:image", "https://timherron.dev/images/tmh_meta.png");
+    metaTags.Add("twitter:image", "https://timherron.dev/images/tmh_meta.png");
+    metaTags.Add("twitter:url", "https://TimHerron.dev" + ViewContext.HttpContext.Request.Path);
+    metaTags.Add("twitter:domain", "https://TimHerron.dev");
 
-}
+
+    // + ViewContext.HttpContext.Request.Path
+
+
+    ViewData["MetaTags"] = metaTags;
+    ViewData["Title"] = Model.Title;
+    }
 
 <div class="container w-full md:max-w-3xl mx-auto">
 
-    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal"">
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal">
 
         <!--Title-->
         <div class="font-sans">

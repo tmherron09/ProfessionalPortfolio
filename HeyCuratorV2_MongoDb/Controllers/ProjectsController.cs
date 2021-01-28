@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace tmherronProfessionalSite.Controllers
 {
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public class AboutController : Controller
+    public class ProjectsController : Controller
     {
-
         public IActionResult Index()
         {
-
-
             return View();
         }
-
-
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace tmherronProfessionalSite.Services
 
         private readonly IMongoCollection<PostModel> _posts;
 
-        private readonly IConfiguration _config;
+        //private readonly IConfiguration _config;
 
         //Uncomment for local MongoDb Dev
         public PostService(ITmherronProfSiteSettings settings)
@@ -43,7 +44,7 @@ namespace tmherronProfessionalSite.Services
         //}
 
         public List<PostModel> Get() =>
-            _posts.Find(post => true).ToList();
+            _posts.Find(post => true).SortByDescending(post => post.PostedOn).ToList();
 
         public List<PostModel> GetFirstFive() =>
             _posts.Find(post => true).Limit(5).ToList();
@@ -51,7 +52,7 @@ namespace tmherronProfessionalSite.Services
         public List<FeedBriefViewModel> GetLatest5Briefs()
         {
             // Test once more posts.
-            List<PostModel> posts = _posts.Find(post => true).Limit(5).ToList();
+            List<PostModel> posts = _posts.Find(post => true).SortByDescending(post => post.PostedOn).Limit(5).ToList();
             List<FeedBriefViewModel> briefs = new List<FeedBriefViewModel>();
 
             foreach (var post in posts)
@@ -86,6 +87,16 @@ namespace tmherronProfessionalSite.Services
 
         public void Remove(string id) =>
             _posts.DeleteOne(post => post.Id == id);
+
+        public void AddComment(PostCommentModel comment, string Id)
+        {
+            PostModel post = _posts.Find(p => p.Id == Id).First();
+            if (post == null)
+                return;
+            comment.DateOfPost = DateTime.Now;
+            post.PostComments = post.PostComments.Append(comment);
+            Update(Id, post);
+        }
 
     }
 }

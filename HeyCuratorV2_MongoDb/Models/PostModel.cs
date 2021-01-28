@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 
 namespace tmherronProfessionalSite.Models
 {
+    [BsonIgnoreExtraElements]
     public class PostModel
     {
 
@@ -25,7 +26,9 @@ namespace tmherronProfessionalSite.Models
         public int ViewCount { get; set; }
         public string FeedType { get; set; }
         public IEnumerable<PostCommentModel> PostComments { get; set; }
+        [BsonIgnore]
         public int CommentCount { get { return PostComments.Count(); } }
+
 
     }
 }

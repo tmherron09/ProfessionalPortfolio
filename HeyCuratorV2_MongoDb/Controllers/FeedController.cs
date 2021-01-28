@@ -9,7 +9,7 @@ using tmherronProfessionalSite.ViewModel;
 
 namespace tmherronProfessionalSite.Controllers
 {
-    
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class FeedController : Controller
     {
         private readonly PostService _postService;

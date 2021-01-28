@@ -20,14 +20,14 @@ namespace tmherronProfessionalSite.ViewModel
             Tagline = post.Tagline;
             AuthorName = post.Author;
             ViewCount = post.ViewCount;
-            if(post.PostComments == null)
-            {
-                CommentCount = 0;
-            } 
-            else
-            {
-                CommentCount = post.PostComments.Count();
-            }
+            //if(post.PostComments == null)
+            //{
+            //    CommentCount = 0;
+            //} 
+            //else
+            //{
+            //    CommentCount = post.PostComments.Count();
+            //}
             BriefText = post.Text.Substring(0, 300);
 
             int indexOfPeriod = BriefText.LastIndexOf('.');

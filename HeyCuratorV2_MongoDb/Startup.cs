@@ -54,6 +54,7 @@ namespace HeyCuratorV2_MongoDb
 
             services.AddSingleton<PostService>();
             services.AddSingleton<ContactService>();
+            services.AddSingleton<SuperSecretTestService>();
 
 
             services.AddCors();

@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace tmherronProfessionalSite.Models
 {
+    [BsonIgnoreExtraElements]
     public class PostCommentModel
     {
 
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        //[BsonId]
+        //[BsonRepresentation(BsonType.ObjectId)]
+        //public string Id { get; set; }
         [BsonElement("PostId")]
         [JsonProperty("postId")]
         public string PostId { get; set; }
@@ -30,6 +29,10 @@ namespace tmherronProfessionalSite.Models
         [BsonElement("Comment_Text")]
         [JsonProperty("commentText")]
         public string CommentText { get; set; }
+        public DateTime DateOfPost { get; set; }
+
+        [JsonExtensionData]
+        public Dictionary<string, object> ExtensionData { get; set; }
 
     }
 }

@@ -14,7 +14,7 @@ namespace tmherronProfessionalSite.Services
     {
         private readonly IMongoCollection<ContactFormModel> _contact;
 
-        private readonly IConfiguration _config;
+        //private readonly IConfiguration _config;
 
         public ContactService(ITmherronProfSiteSettings settings)
         {

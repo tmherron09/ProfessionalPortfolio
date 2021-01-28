@@ -1,0 +1,35 @@
+﻿@using tmherronProfessionalSite.Models
+@model SuperSecretTestModel
+
+<h1>Super Secret Test Area.</h1>
+<h3>This area is where I can do super secret tests that are actually just me testing services before I add them fully. Utilizing techniques or libraries I have not used prior.</h3>
+
+<br />
+
+<table class="table-fixed">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>@Model.Name</td>
+        </tr>
+        @foreach (var item in Model.ExtensionData)
+        {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value.ToString()</td>
+        </tr>
+        }
+        </tbody>
+    </table>
+
+
+<div class="table w-1/2">
+
+
+</div>

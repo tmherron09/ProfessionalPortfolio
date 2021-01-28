@@ -11,6 +11,7 @@ using tmherronProfessionalSite.Services;
 
 namespace HeyCuratorV2_MongoDb.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,7 +27,6 @@ namespace HeyCuratorV2_MongoDb.Controllers
         {
             return View(_postService.GetLatest5Briefs());
         }
-
         public IActionResult Privacy()
         {
             return View();

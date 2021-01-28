@@ -1,7 +1,19 @@
 ﻿@model List<tmherronProfessionalSite.ViewModel.FeedBriefViewModel>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Tim Herron - .Net Developer";
 
+    Dictionary<string, string> metaTags = new Dictionary<string, string>();
+    metaTags.Add("og:title", "Tim Herron - .Net Developer");
+    metaTags.Add("twitter:title", "Tim Herron - .Net Developer");
+    metaTags.Add("og:type", "website");
+    metaTags.Add("og:url", "https://TimHerron.dev");
+    metaTags.Add("og:description", "Professional Portfolio of Tim Herron");
+    metaTags.Add("twitter:description", "Professional Portfolio of Tim Herron");
+    metaTags.Add("og:image", "https://timherron.dev/images/tmh_meta.png");
+    metaTags.Add("twitter:image", "https://timherron.dev/images/tmh_meta.png");
+    metaTags.Add("twitter:url", "https://TimHerron.dev");
+    metaTags.Add("twitter:domain", "https://TimHerron.dev");
+    ViewData["MetaTags"] = metaTags;
 }
 
 
