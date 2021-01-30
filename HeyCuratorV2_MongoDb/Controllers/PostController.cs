@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using tmherronProfessionalSite.Models;
 using tmherronProfessionalSite.Services;
 
-namespace HeyCuratorV2_MongoDb.Controllers
+namespace tmherronProfessionalSite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

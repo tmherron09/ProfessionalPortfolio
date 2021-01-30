@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace HeyCuratorV2_MongoDb.Data.Migrations
+namespace tmherronProfessionalSite.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

@@ -31,6 +31,7 @@ namespace tmherronProfessionalSite.Utility
             catch (ParseException e)
             {
                 // Email parsing failed
+                var tempCatch = e;
                 return false;
             }
 

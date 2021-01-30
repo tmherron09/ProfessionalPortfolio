@@ -18,7 +18,7 @@ namespace tmherronProfessionalSite.Services
         //private readonly IConfiguration _config;
 
         //Uncomment for local MongoDb Dev
-        public SuperSecretTestService(ITmherronProfSiteSettings settings)
+        public SuperSecretTestService(ISiteDbSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
 

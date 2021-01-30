@@ -6,11 +6,12 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using Newtonsoft.Json;
+using tmherronProfessionalSite.Contracts;
 
 namespace tmherronProfessionalSite.Models
 {
     [BsonIgnoreExtraElements]
-    public class PostModel
+    public class PostModel : IDocument
     {
 
 

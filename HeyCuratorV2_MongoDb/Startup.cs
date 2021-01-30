@@ -1,4 +1,4 @@
-using HeyCuratorV2_MongoDb.Data;
+using tmherronProfessionalSite.Data;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Builder;
@@ -11,10 +11,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using React.AspNet;
-using tmherronProfessionalSite.Data;
+using tmherronProfessionalSite.Contracts;
 using tmherronProfessionalSite.Services;
 
-namespace HeyCuratorV2_MongoDb
+namespace tmherronProfessionalSite
 {
     public class Startup
     {
@@ -49,9 +49,13 @@ namespace HeyCuratorV2_MongoDb
             services.Configure<TmherronProfSiteSettings>(
                 Configuration.GetSection(nameof(TmherronProfSiteSettings)));
 
-            services.AddSingleton<ITmherronProfSiteSettings>(sp =>
+            services.AddSingleton<ISiteDbSettings>(sp =>
                 sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
 
+            services.AddScoped<IRepositoryWrapperSite, RepositoryWrapper>();
+
+
+            // Remove services once replaced by Repo Pattern
             services.AddSingleton<PostService>();
             services.AddSingleton<ContactService>();
             services.AddSingleton<SuperSecretTestService>();
@@ -61,6 +65,7 @@ namespace HeyCuratorV2_MongoDb
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             services.AddSwaggerGen(c =>
            {

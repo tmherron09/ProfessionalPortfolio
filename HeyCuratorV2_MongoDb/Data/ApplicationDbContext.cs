@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HeyCuratorV2_MongoDb.Data
+namespace tmherronProfessionalSite.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

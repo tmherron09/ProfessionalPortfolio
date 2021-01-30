@@ -1,6 +1,6 @@
 using System;
 
-namespace HeyCuratorV2_MongoDb.Models
+namespace tmherronProfessionalSite.Models
 {
     public class ErrorViewModel
     {
