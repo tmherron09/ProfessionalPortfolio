@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-HeyCuratorV2_MongoDb-194B5429-EDFB-4F95-8FA2-9ACD0BBAD290</UserSecretsId>
+    <UserSecretsId>aspnet-tmherronProfessionalSite-194B5429-EDFB-4F95-8FA2-9ACD0BBAD290</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
-    <StartupObject>HeyCuratorV2_MongoDb.Program</StartupObject>
+    <StartupObject>tmherronProfessionalSite.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

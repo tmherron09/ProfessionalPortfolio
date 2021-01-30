@@ -19,7 +19,7 @@ namespace tmherronProfessionalSite.Services
         //private readonly IConfiguration _config;
 
         //Uncomment for local MongoDb Dev
-        public PostService(ITmherronProfSiteSettings settings)
+        public PostService(ISiteDbSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
 

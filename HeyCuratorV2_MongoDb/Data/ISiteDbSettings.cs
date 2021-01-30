@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace tmherronProfessionalSite.Data
 {
-    public interface ITmherronProfSiteSettings
+    public interface ISiteDbSettings
     {
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }

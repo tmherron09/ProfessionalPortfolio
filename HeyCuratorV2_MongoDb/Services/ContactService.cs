@@ -16,7 +16,7 @@ namespace tmherronProfessionalSite.Services
 
         //private readonly IConfiguration _config;
 
-        public ContactService(ITmherronProfSiteSettings settings)
+        public ContactService(ISiteDbSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
 
