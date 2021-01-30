@@ -32,5 +32,10 @@ namespace tmherronProfessionalSite.Controllers
             return View();
         }
 
+        public IActionResult LiveEditor()
+        {
+            return View();
+        }
+
     }
 }
