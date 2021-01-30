@@ -1,0 +1,25 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .btn-indigo {
+        @apply px-4 py-2 rounded font-semibold bg-orange-500 text-white;
+    }
+}
+
+/* Feed Hover*/
+.post_pulse:hover {
+    animation: postPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes postPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .75;
+    }
+}

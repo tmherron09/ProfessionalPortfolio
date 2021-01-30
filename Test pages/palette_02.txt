@@ -1,0 +1,7 @@
+--turquoise: #69e0cdff;
+--arylide-yellow: #dbc869ff;
+--big-dip-oruby: #a33648ff;
+--red-ncs: #b31933ff;
+--glaucous: #7886cfff;
+--brick-red: #ba3c51ff;
+
