@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace tmherronProfessionalSite.Data
 {
@@ -12,5 +10,34 @@ namespace tmherronProfessionalSite.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<IdentityRole>()
+                .HasData(
+                new IdentityRole
+                {
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                new IdentityRole
+                {
+                    Name = "Curator",
+                    NormalizedName = "CURATOR"
+                },
+                new IdentityRole
+                {
+                    Name = "AFM",
+                    NormalizedName = "AFM"
+                },
+                new IdentityRole
+                {
+                    Name = "Guest",
+                    NormalizedName = "Guest"
+                });
+        }
+
     }
 }

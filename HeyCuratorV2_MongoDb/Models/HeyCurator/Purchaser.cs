@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace tmherronProfessionalSite.Contracts
+namespace tmherronProfessionalSite.Models.HeyCurator
 {
-    interface IRepositoryBaseHC
+    public class Purchaser
     {
     }
 }

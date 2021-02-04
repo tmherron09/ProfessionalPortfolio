@@ -1,9 +1,9 @@
-using tmherronProfessionalSite.Data;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using JavaScriptEngineSwitcher.V8;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,8 +11,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using React.AspNet;
+using System.Security.Claims;
 using tmherronProfessionalSite.Contracts;
+using tmherronProfessionalSite.Contracts.HeyCurator;
+using tmherronProfessionalSite.Data;
+using tmherronProfessionalSite.Data.HeyCurator;
 using tmherronProfessionalSite.Services;
+using tmherronProfessionalSite.Services.HeyCurator;
 
 namespace tmherronProfessionalSite
 {
@@ -41,24 +46,45 @@ namespace tmherronProfessionalSite
                     Configuration.GetConnectionString("DefaultConnection")));
 
             // Temp Disabled
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultUI()
+               .AddDefaultTokenProviders();
+
+
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+            });
+            services.AddScoped<ClaimsPrincipal>(s => s.GetService<IHttpContextAccessor>().HttpContext.User);
+
 
 
             // Local MongoDb Data access configuration
             services.Configure<TmherronProfSiteSettings>(
                 Configuration.GetSection(nameof(TmherronProfSiteSettings)));
 
+            // Site settings interface/settings
             services.AddSingleton<ISiteDbSettings>(sp =>
                 sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
-
             services.AddScoped<IRepositoryWrapperSite, RepositoryWrapper>();
+
+            // Hey Curator settings interface/settings
+            services.AddSingleton<IHCDbSettings>(sp =>
+                sp.GetRequiredService<IOptions<TmherronProfSiteSettings>>().Value);
+            services.AddScoped<IRepositoryWrapperHC, RepositoryWrapperHC>();
+
 
 
             // Remove services once replaced by Repo Pattern
             services.AddSingleton<PostService>();
             services.AddSingleton<ContactService>();
             services.AddSingleton<SuperSecretTestService>();
+
+
+            // Hey Curator Services
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<ProjectionService>();
 
 
             services.AddCors();
@@ -141,6 +167,8 @@ namespace tmherronProfessionalSite
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
