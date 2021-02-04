@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using tmherronProfessionalSite.Models.HeyCurator
+@inject IHttpContextAccessor  _httpContext
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    string user = "Not passed.";
+    if (_signInManager.IsSignedIn(User))
+    {
+        user = _httpContext.HttpContext.Session.GetString("username") ?? "Default";
+    }
+}
