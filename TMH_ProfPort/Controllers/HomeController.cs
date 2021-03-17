@@ -88,10 +88,13 @@ namespace TMH_ProfPort.Controllers
                 throw e;
             }
            
-
-
             return View("ThankYou");
         }
 
+        [HttpGet]
+        public IActionResult StyleGuide()
+        {
+            return View();
+        }
     }
 }
