@@ -1,0 +1,16 @@
+﻿@model List<PostViewModel>
+
+
+
+<div class="px-6 py-8">
+    <div class="flex justify-center container mx-auto">
+        <div class="w-full lg:w-8/12">
+            @foreach (var pvm in Model)
+            {
+
+                <partial name="_NewsBriefPartial" model="pvm" />
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="garden">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TMH_ProfPort</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-base-100">
+    <header class="sticky top-0 z-10 bg-base-100">
+        <div class="flex flex-col space-y-2">
+            <div class="p-4 pb-0 lg:p-8 lg:pb-0">
+                <div class="navbar shadow-lg bg-neutral text-neutral-content rounded-box shadow-lg">
+                    <div class="flex-1 px-2 mx-2 lg:flex-none">
+                        <span class="text-lg font-bold"> TimHerron.Dev </span>
+                    </div>
+                    <div class="justify-center flex-1 hidden px-2 mx-2 lg:flex">
+                        <div class="flex items-stretch">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-ghost btn-sm rounded-btn"> Home </a>
+                            <a asp-controller="Home" asp-action="Projects" class="btn btn-ghost btn-sm rounded-btn"> Projects </a>
+                            <a asp-controller="Home" asp-action="About" class="btn btn-ghost btn-sm rounded-btn"> About </a>
+                            <a href="#" class="btn btn-ghost btn-sm rounded-btn"> Hey Curator! </a>
+                        </div>
+                    </div>
+                    <div class="flex-none">
+                        <a asp-controller="Home" asp-action="Contact" class="btn btn-square btn-ghost">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor" />
+                            </svg>
+                        </a>
+                        @*<button class="btn btn-square btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        </button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow block w-full overflow-x-hidden text-base-content">
+        <ul class="menu w-16 py-3 mr-6 shadow-lg  rounded-box lg:hidden float-left">
+            <li>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="p-4 lg:p-10 lg:pb-0">
+            <div class="grid grid-cols-1 gap-6 lg:p-10 lg:pb-0 rounded-box float-right">
+
+                @RenderBody()
+
+            </div>
+        </div>
+    </main>
+
+
+
+    @*<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - TMH_ProfPort - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
