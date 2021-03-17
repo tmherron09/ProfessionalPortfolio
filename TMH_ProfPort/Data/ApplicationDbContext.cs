@@ -16,6 +16,8 @@ namespace TMH_ProfPort.Data
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
+        public DbSet<ContactFormSubmission> ContactFormSubmissions { get; set; }
+
 
 
     }

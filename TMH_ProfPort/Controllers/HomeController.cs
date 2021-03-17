@@ -59,8 +59,8 @@ namespace TMH_ProfPort.Controllers
 
 
             return View();
-        } 
-        
+        }
+
         [HttpGet]
         public IActionResult Contact()
         {
@@ -68,5 +68,30 @@ namespace TMH_ProfPort.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ContactSubmission(ContactFormSubmission form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Error");
+            }
+
+            form.DateSubmitted = DateTime.Now;
+            try
+            {
+                await _context.ContactFormSubmissions.AddAsync(form);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+           
+
+
+            return View("ThankYou");
+        }
+
     }
 }

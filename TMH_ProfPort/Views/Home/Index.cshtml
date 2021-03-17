@@ -44,25 +44,25 @@
     @* Contact Form *@
 
     <div class="card w-96 lg:w-1/4 shadow-lg lg:card-side bordered bg-base-100 mx-auto ">
-        <form class="bg-base-100 shadow-sm rounded-md p-8 min-w-full">
+        <form asp-action="ContactSubmission" asp-controller="Home" method="post" class="bg-base-100 shadow-sm rounded-md p-8 min-w-full">
             <h1 class="text-base-content text-3xl font-bold mb-3">Contact Me</h1>
             <div class="form-control ">
                 <label htmlFor="name" class="label">
                     <span class="label-text">Name: </span>
                 </label>
-                <input type="text" class="input input-bordered" placeholder="Enter your name..." />
+                <input type="text" name="Name" class="input input-bordered" placeholder="Enter your name..." />
             </div>
             <div class="form-control">
                 <label htmlFor="email" class="label">
                     <span class="label-text">Email address: </span>
                 </label>
-                <input type="text" class="input input-bordered" placeholder="Email address..." />
+                <input type="text" name="Email" class="input input-bordered" placeholder="Email address..." />
             </div>
             <div class="form-control">
                 <label htmlFor="message" class="label">
                     <span class="label-text">Inquiries/Comments: </span>
                 </label>
-                <textarea class="textarea h-24 textarea textarea-bordered">
+                <textarea name="Message" class="textarea h-24 textarea textarea-bordered">
             </textarea>
             </div>
             <div class="form-control mt-6">
