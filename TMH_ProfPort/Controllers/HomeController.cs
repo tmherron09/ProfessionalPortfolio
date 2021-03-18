@@ -96,5 +96,15 @@ namespace TMH_ProfPort.Controllers
         {
             return View();
         }
+
+
+        [Route("/heycurator")]
+        public IActionResult HeyCurator()
+        {
+
+
+            return Redirect("http://tmherron-001-site3.itempurl.com/");
+        }
+
     }
 }
